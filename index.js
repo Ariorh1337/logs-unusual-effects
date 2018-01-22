@@ -69,7 +69,7 @@ module.exports = function FlyMore(dispatch) {
 PlayerID: ' + abnormal.playerId + ' ID: ' + abnormal.id + ' Identified: ' + identfied;
 		} else {
 			//log = log + '\r\n' + "[" + timeStr + "]" + ' Name: ' + playerName + ' Class: ' + playerClass + ' \
-PlayerID: ' + abnormal.playerId + ' ID: ' + abnormal.id;  //
+//PlayerID: ' + abnormal.playerId + ' ID: ' + abnormal.id;
 			}
 	});
 	function write(file, data) { fs.appendFileSync(file, data) }
