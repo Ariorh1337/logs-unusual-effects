@@ -55,7 +55,7 @@ module.exports = function FlyMore(dispatch) {
 			playerClass = 8 } else if (playerClass == 9) {playerClass = 'Engineer' } else if (playerClass == 10) { playerClass = 'Crusher'
 			} else if (playerClass == 11) { playerClass = 'Shinobi' } else if (playerClass == 0) {playerClass = 'Warrior'
 			} else if (playerClass == 12) { playerClass = 'Valkyrie' }
-		identfied = 0;
+		identfied = 'none';
 		z = Identified.unknown.length;
 		for (i = 0; i < z; i++) {
 			if (abnormal.id == Identified.unknown[i]) { identfied = 'unknown'; break;}
@@ -69,7 +69,7 @@ module.exports = function FlyMore(dispatch) {
 PlayerID: ' + abnormal.playerId + ' ID: ' + abnormal.id + ' Identified: ' + identfied;
 		} else {
 			//log = log + '\r\n' + "[" + timeStr + "]" + ' Name: ' + playerName + ' Class: ' + playerClass + ' \
-//PlayerID: ' + abnormal.playerId + ' ID: ' + abnormal.id;
+//PlayerID: ' + abnormal.playerId + ' ID: ' + abnormal.id + ' Identified: ' + identfied;
 			}
 	});
 	function write(file, data) { fs.appendFileSync(file, data) }
