@@ -1,5 +1,6 @@
 const Command = require('command'), fs = require('fs'), path = require('path');
-var chaise = false, log = '\r\n' + 'Start log';
+const identified = require('./identified.js');
+var chaise = false, log = '\r\n' + 'Start log', identfied = 'none';
 const dir = path.join(__dirname, '..', '..', '..', 'logs');
 var playerId = ['','','','',''], clas = ['','','','',''], name = ['','','','','']
 if (!fs.existsSync(dir)) fs.mkdirSync(dir);
@@ -49,11 +50,27 @@ module.exports = function FlyMore(dispatch) {
 			}
 		}
 		if (playerClass == 1) {playerClass = 'Knight'} else if (playerClass == 2) { playerClass = 'Slayer' } else if (playerClass == 3) {
-			playerClass = 'Berserk' } else if (playerClass == 4) { playerClass = 4 } else if (playerClass == 5) { playerClass = 'Archer' } else if (playerClass == 6) {
-			playerClass = 6 } else if (playerClass == 7) { playerClass = 7 } else if (playerClass == 8) { playerClass = 8 } else if (playerClass == 9) {
-			playerClass = 'Engineer' } else if (playerClass == 10) { playerClass = 'Crusher' } else if (playerClass == 11) { playerClass = 'Shinobi' } else if (playerClass == 0) {
-			playerClass = 'Warrior' } else if (playerClass == 12) { playerClass = 'Valkyrie' }
-		log = log + '\r\n' + "[" + timeStr + "]" + ' Name: ' + playerName + ' Class: ' + playerClass + ' PlayerID: ' + abnormal.playerId + ' ID: ' + abnormal.id;
+			playerClass = 'Berserk' } else if (playerClass == 4) { playerClass = 4 } else if (playerClass == 5) { playerClass = 'Archer'
+			} else if (playerClass == 6) {playerClass = 6 } else if (playerClass == 7) { playerClass = 'Mystic' } else if (playerClass == 8) {
+			playerClass = 8 } else if (playerClass == 9) {playerClass = 'Engineer' } else if (playerClass == 10) { playerClass = 'Crusher'
+			} else if (playerClass == 11) { playerClass = 'Shinobi' } else if (playerClass == 0) {playerClass = 'Warrior'
+			} else if (playerClass == 12) { playerClass = 'Valkyrie' }
+		identfied = 0;
+		z = Identified.unknown.length;
+		for (i = 0; i < z; i++) {
+			if (abnormal.id == Identified.unknown[i]) { identfied = 'unknown'; break;}
+		}
+		z = Identified.Debuff.length;
+		for (i = 0; i < z; i++) {
+			if (abnormal.id == Identified.Debuff[i]) { identfied = 'Debaff'; break;}
+		}
+		if (identfied == 'none') {
+			log = log + '\r\n' + "[" + timeStr + "]" + ' Name: ' + playerName + ' Class: ' + playerClass + ' \
+PlayerID: ' + abnormal.playerId + ' ID: ' + abnormal.id + ' Identified: ' + identfied;
+		} else {
+			//log = log + '\r\n' + "[" + timeStr + "]" + ' Name: ' + playerName + ' Class: ' + playerClass + ' \
+PlayerID: ' + abnormal.playerId + ' ID: ' + abnormal.id;  //
+			}
 	});
 	function write(file, data) { fs.appendFileSync(file, data) }
 }
